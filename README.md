@@ -37,7 +37,6 @@ eg: npm install module_name
 AFTER INSTALLATION
 - Download all the files in the same directory.
 - Go to that directory through command line.
-- Execute the .js file using command
-	node sample.js
+- Execute the .js file using command - "node sample.js"
 
 
