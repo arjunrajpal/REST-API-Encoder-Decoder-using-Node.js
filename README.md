@@ -12,18 +12,17 @@ STEPS FOR EXECUTING
 - Mac	node-v0.12.0-darwin-x86.tar.gz
 - SunOS	node-v0.12.0-sunos-x86.tar.gz
 
-Based on your OS architecture, download and extract the archive node-v0.12.0-osname.tar.gz into /tmp, and then finally move extracted files into /usr/local/nodejs directory. For example:
-
-$ sudo apt-get install nodejs
-Add /usr/local/nodejs/bin to the PATH environment variable.
+Based on your OS architecture, download and extract the archive node-v0.12.0-osname.tar.gz into /tmp, and then finally move extracted files into /usr/local/nodejs directory. For example-
+  $ sudo apt-get install nodejs
+  Add /usr/local/nodejs/bin to the PATH environment variable.
 
 OS	Output
-Linux	export PATH=$PATH:/usr/local/nodejs/bin
-Mac	export PATH=$PATH:/usr/local/nodejs/bin
-FreeBSD	export PATH=$PATH:/usr/local/nodejs/bin
+- Linux	export PATH=$PATH:/usr/local/nodejs/bin
+- Mac	export PATH=$PATH:/usr/local/nodejs/bin
+- FreeBSD	export PATH=$PATH:/usr/local/nodejs/bin
 
 Installation on Windows
-Use the MSI file and follow the prompts to install the Node.js. By default, the installer uses the Node.js distribution in C:\Program Files\nodejs. The installer should set the C:\Program Files\nodejs\bin directory in window's PATH environment variable. Restart any open command prompts for the change to take effect.
+- Use the MSI file and follow the prompts to install the Node.js. By default, the installer uses the Node.js distribution in C:\Program Files\nodejs. The installer should set the C:\Program Files\nodejs\bin directory in window's PATH environment variable. Restart any open command prompts for the change to take effect.
 
 
 INSTALLATION OF REQUIRED MODULES
