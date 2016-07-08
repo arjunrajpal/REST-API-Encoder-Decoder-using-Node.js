@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <style>
+                #d1
+                {
+                    
+                    background-color: #3b5998;
+                    
+                    align-self:center;
+                    
+                    border-style:solid; 
+                    
+                    border-size:3px;
+                    
+                    height:300px;
+                    
+                }
+            
+            #d2
+            {    
+                font-family: sans-serif;
+                background-color:#edf0f5;
+                overflow: auto;
+            }
+            
+            #d3
+            {
+                align-self:left;
+                border-style: ridge;
+                shape-inside: rectangle();
+                height: auto;
+                width: 250px;
+                background-color:orange;
+                overflow: auto;
+                max-height: auto;
+                min-height: auto;
+                max-width: 250px;
+                min-width: 250px;
+            }
+            
+            #h3
+            {
+                text-align: center;
+                overflow: auto;
+            }
+            
+            #p1
+            {
+                visibility: hidden;
+                
+                position: absolute;
+                top:500px;
+                right: 500px;
+                overflow: auto;
+            }
+            
+            #p2
+            {
+                visibility: visible;
+                position:absolute;
+                top: 700px;
+                right: 500px;
+                overflow: auto
+            }
+            
+            
+            #p3
+            {
+                visibility:hidden; 
+                position:absolute;
+                top: 600px;
+                right: 500px;
+                overflow: auto
+                
+            }
+            
+            #f1
+            {
+                color:orange; 
+                
+                font-size:50px;
+                
+                overflow: auto;
+            }
+            
+            #f2
+            {
+                color:red; 
+                
+                font-size:30px;
+                
+                text-align: right;
+                
+                overflow: auto;
+                
+            }
+            
+            #f3
+            {
+                font-family:Georgia;
+                
+                overflow: auto;
+            }
+            
+            
+            
+            #form1
+            {
+                background-color: #edf0f5;
+                overflow: auto;
+            }
+            
+            #hr1
+            {
+                content: normal;
+            }
+            
+                </style>
+            
+            
+            
+            <title>SMS Encoder/Decoder</title>
+            
+            
+            <!--<script type="text/javascript" src="/socket.io/socket.io.js"></script>-->
+            <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script> 
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+            
+            <script type="text/javascript">
+                
+                var a=setInterval(function (){ f4()},1000);
+                
+                
+                function f1()
+                
+                {
+                    
+                    document.getElementById("p3").style.visibility="hidden";
+                    
+                    document.getElementById("p1").style.visibility="visible";
+                    
+                    document.getElementById("smsc").required=true;
+                    
+                    document.getElementById("receiver").required=true;
+                    
+                }
+            
+            
+            
+            function f2()
+            
+            {
+                
+                document.getElementById("p1").style.visibility="hidden";
+                
+                document.getElementById("p2").style.visibility="hidden";
+                
+                document.getElementById("p3").style.visibility="visible";
+                
+                document.getElementById("smsc").required=false;
+                
+                document.getElementById("receiver").required=false;
+                
+            }
+            
+            
+            function f3()
+            {
+                
+                document.getElementById("p2").style.visibility="visible";
+                
+            }
+            
+            
+            function f4()
+            {
+                var x=new Date();
+                document.getElementById("h3").innerHTML=x.toLocaleTimeString();
+            }
+            
+                </script>
+            <script>
+                /*    var socket=io.connect('http://localhost:8080');
+                 socket.on("message",function(message){
+                 message=JSON.parse(message);
+                 console.log(message.data);
+                 if((message.data!==undefined)&&(isNaN(message.data)))
+                 {console.log("a");
+                 
+                 $('#output').val(message.data);
+                 console.log(document.getElementById('output').innerHTML);
+                 message.data=0;}
+                 });
+                 */
+            $(document).ready(function(){    
+                              $("#form1").submit(function(e){
+                                                 alert($("#origmess1").html());
+                                                 alert($("#origmess2").val());
+                                                 $.ajax({
+                                                        url:"postData",
+                                                        type:"post",
+                                                        data:"smsc="+$("#smsc").val()+"&receiver="+$("#receiver").val()+"&size="+$(".size").val()+"&mclass="+$("#mclass").val()+"&receipt="+$("#receipt").val()+"&validity="+$("#validity").val()+"&val="+$("#val").val()+"&origmess1="+$("#origmess1").html()+"&origmess2="+$("#origmess2").val(),
+                                                        success:function(output)
+                                                        {
+                                                        alert(JSON.stringify(output));
+                                                        $('#output').html("Output"+output);
+                                                        }
+                                                        });
+                                                 e.preventDefault();
+                                                 });
+                              });
+                              
+                              
+                              function f5()
+                              {
+                                  if(document.getElementById('validity').checked)
+                                  {
+                                      document.getElementById('val').disabled=false;
+                                      document.getElementById('val').required=true;
+                                  }
+                                  
+                                  else
+                                  {
+                                      document.getElementById('val').disabled=true; 
+                                      document.getElementById('val').value='';
+                                      document.getElementById('val').required=false;
+                                  }
+                              }
+            </script>    
+            
+            
+            
+    </head>
+    
+    
+    <body>
+        <span id="s1">
+            <div id="d1">
+                
+                <center>
+                    
+                    <pre>
+                        <font id="f1">EN
+                            
+                            <b><font id="f2">                   C O D E R</font></b>
+                            
+                            DE
+                        </font>
+                        
+                    </pre>
+                    
+                </center>
+                
+            </div>
+            
+            <br>
+            
+            <h3 id="h3"> </h3>
+            
+            <br>
+            
+            <form id="form1" method="POST">
+                
+                <fieldset>
+                    
+                    <legend><font face="Chalkduster" size="4" >Encode/Decoder</font>
+                    </legend>
+                    
+                    <div id="d2">
+                        
+                        <br>
+                        <br>    
+                        
+                        <center>
+                            <input type="button" name="encoder" value="Encoder" style="height:30px; width:100px" onclick="f1()" >
+                                
+                                <input type="button" name="decoder" value="Decoder" style="height:30px; width:100px" onclick="f2()">
+                        </center>
+                        
+                    </div>
+                    
+                    <br><br>
+                    <div id="d3">
+                        
+                        <font id="f3">
+                            SMSC <input id="smsc" type="number" name="smsc" min="10000000000" max="99999999999" required>
+                                
+                                <br><br><br>
+                                
+                                Receiver <input id="receiver" type="number" name="receiver" min="10000000000" max="99999999999" required >
+                                    
+                                    <br><br><br>
+                                    
+                                    Alphabet Size :
+                                    <input class="size" type="radio" name="size" value="7" checked> 7
+                                        <input class="size" type="radio" name="size" value="8">  8
+                                            <input class="size" type="radio" name="size" value="16">  16
+                                                
+                                                <br><br><br>
+                                                Message Class <select id="mclass" name="mclass">
+                                                    <option value="N">None</option>
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                
+                                                <br><br><br>
+                                                
+                                                Receipt <input TYPE="CHECKBOX" name="receipt" id="receipt">
+                                                    
+                                                    <br><br><br>
+                                                    
+                                                    Validity <input id="validity" TYPE="CHECKBOX" name="validity" onclick="f5()">
+                                                        <input id="val" type="number" name="val" size="3" maxlength="3" min="0" max="255" disabled>
+                                                            <br>(Relative)
+                                                            
+                        </font>
+                        
+                    </div>
+                    <input id="submit" type="submit" name="encode" value="submit" onclick="f3()">
+
+                    <center>
+                        <p id="p1">
+                        Enter Message To Be Encoded
+                        
+                        <br>
+                        
+                        <textarea name="origmess1" id="origmess1" onclick="this.innerHTML=''" rows="7" cols="30" required>Write Text</textarea>
+                        
+                        <br>
+                        
+                        <!--<input id="submit" type="submit" name="encode" value="submit" onclick="f3()">-->
+                            
+                            </p>
+                            
+                            <br>
+                            
+                            <p id="p2">Output:<br>
+                            
+                            <textarea id="output" name="encodedmess" rows="7" cols="30"></textarea>
+                            
+                            </p>
+                    </center>
+                    
+                    
+                    <center>
+                        <p id="p3">
+                        Enter Message To Be Decoded
+                        
+                        <br>
+                        
+                        
+                        <textarea name="origmess2" id="origmess2" onclick="this.innerHTML=''" rows="7" cols="30" required  >Write Text</textarea>
+                        <br>
+                        
+                        <!--<input type="submit" name="decode" value="submit" onclick="f3()">-->
+                            
+                            </p>
+                            
+                            <br>
+                    </center>
+                    
+                    <hr id="hr1">Developed By Hughes Systique &copy;
+                    
+                </fieldset>
+                
+            </form>
+        </span>
+        
+    </body>
+    
+</html>
