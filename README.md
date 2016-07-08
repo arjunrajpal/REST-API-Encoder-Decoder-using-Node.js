@@ -1,4 +1,4 @@
-# internship
+# REST API
 General
 This respository contains a REST API implmented in Node.js which recives data from an HTML/CSS file using AJAX request, modifies it and sends the modified data to a C++ program for encoding/decoding purpose.
 The output received from the program is converted into JSON format and sent back the same HTML/CSS page.
